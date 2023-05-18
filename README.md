@@ -1,6 +1,6 @@
-# Etiquetadora de Productos de Fiambres
+# Etiquetadora de Productos de <span style="color:red">Fiambres</span>
 
-_Este proyecto es una página web que te permite imprimir etiquetas adhesivas personalizadas para productos de fiambres. Además, cuenta con la funcionalidad de capturar el peso de un producto utilizando una balanza._
+Este proyecto es una página web que te permite imprimir etiquetas adhesivas personalizadas para productos de fiambres. Además, cuenta con la funcionalidad de capturar el peso de un producto utilizando una balanza.
 
 ![screen-install](Balanza-Antonativa.png)
 
@@ -21,16 +21,19 @@ _Este proyecto es una página web que te permite imprimir etiquetas adhesivas pe
 ## Instalacion 🚀
 
  _Clonar repo Git_
+
     ```
     git clone "https://github.com/JhonatanCremona/FronEndBalanzaAntonativa.git"
     ```
 _cd FronEndBalanzaAntonativa_
 
 _Instala las Dependecias con npm_
+
     ```
     npm install
     ```
 _Ejecutar proyecto_
+
     ```
     npm run dev
     ```
