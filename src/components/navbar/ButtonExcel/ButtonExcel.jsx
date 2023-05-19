@@ -1,9 +1,7 @@
 //Dependencias
 import { useState } from "react"
-import { Excel } from "../export/ExelExport"
 //Styles
-import "../../../public/css/ButtonExcel.css"
-
+import Style from "./ButtonExcel.module.css"
 
 export const ButtonExcel = () => {  
     const [isExporting, setIsExporting] = useState(false) 
@@ -12,7 +10,7 @@ export const ButtonExcel = () => {
     const handleClick = () => {
         setIsExporting(true);
         if (setIsExporting) {
-            console.log(Excel);
+            console.log("dasd");
         }
         setTimeout(() => {
             setIsExporting(false)
@@ -25,12 +23,12 @@ export const ButtonExcel = () => {
 
     return (
         <button
-            className="exportarExcel"
+            className={Style.exportarExcel}
             disabled={isExporting || isExpot}
             onClick={handleClick}>
-            <span className="rail"></span>
-            <span className="iconExcel"></span>
-            <span className="text">
+            <span className={Style.rail}></span>
+            <span className={Style.iconExcel}></span>
+            <span className={Style.text}>
                 {isExporting
                     ? "Exportando" 
                     : isExpot

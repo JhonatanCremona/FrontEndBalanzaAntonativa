@@ -1,0 +1,36 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    padding: 0px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.titleh1 {
+    color: rgb(216, 154, 35);
+}
+.titlesub {
+    font-style: italic;
+}
+
+.lista {
+    display: flex;
+    list-style: none;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+.icon {
+    width: 1.7rem;
+    height: 1.7rem;
+    margin: auto;
+    color: #b3b3b3;
+    margin: 10px 12px 0px 12px ;
+}
+.icon:hover {
+    color: #fff;
+}
+

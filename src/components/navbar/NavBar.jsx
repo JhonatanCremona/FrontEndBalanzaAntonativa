@@ -1,11 +1,11 @@
 //Dependencias
 import { Link } from "react-router-dom"
 import { BellIcon } from '@heroicons/react/outline';
-//Componentes
-import { ButtonExcel } from "./ButtonExcel";
+//Components
+import { ButtonExcel } from "./ButtonExcel/ButtonExcel";
 import { NavLink } from "./NavLink";
-//Estylos
-
+//Styles
+import Style from "./NavBar.module.css";
 
 export const NavBar = () => {
     const opciones = [
@@ -32,18 +32,18 @@ export const NavBar = () => {
     ]
     return (
         <>
-            <nav className="nav-bar">
+            <nav className={Style.navbar}>
                 <div id="title">
-                    <Link className="logo" to="/" > 
-                    <h1 className="title-h1">Antonativa</h1>
-                    <h1 className="title-sub"><b>Balanza</b></h1>
+                    <Link className={Style.logo} to="/" > 
+                        <h1 className={Style.titleh1}>Antonativa</h1>
+                        <h1 className={Style.titlesub}><b>Balanza</b></h1>
                     </Link>
                 </div>
-                <ul className="lista">
+                <ul className={Style.lista}>
                     <li>
                         <Link to={"/notification"}>
                         <BellIcon
-                            className="icon" 
+                            className={Style.icon} 
                             aria-hidden="true"
                         />
                         </Link>
@@ -54,7 +54,9 @@ export const NavBar = () => {
                     {
                         opciones.map(({id, href, text}) => {
                             return (
-                                <li key={id}><NavLink to={href}>{text}</NavLink> </li>
+                                <li key={id}>
+                                    <NavLink to={href}>{text}</NavLink>
+                                </li>
                             )
                         })
                     }

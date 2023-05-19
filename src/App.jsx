@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 //Components
 import { EtiquetaContextProvaider } from './components/context/EtiquetaContex';
 import { Layout } from './components/Layout';
+import { Contacts } from './components/contact/Contact';
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
     <EtiquetaContextProvaider>
       <Routes>
         <Route path='/' element={<Layout/>} >
-
+          <Route path='contacts' element={<Contacts/>}/>
         </Route>
       </Routes>
     </EtiquetaContextProvaider>
