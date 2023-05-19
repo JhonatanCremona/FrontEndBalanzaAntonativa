@@ -1,7 +1,7 @@
 import { useState, createContext, useEffect } from "react";
 
 export const EtiquetaContext = createContext();
-export const EtiquetaContextProvaider = ({ children}) => {
+export const EtiquetaContextProvaider = ({ children }) => {
     const [etiqueta, setEtiqueta] = useState([]);
     const [producto, setProducto] = useState([]);
 

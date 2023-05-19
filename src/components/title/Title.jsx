@@ -1,10 +1,11 @@
-import "./Title.css";
+import Style from "./Title.module.css";
 
 export const Title = ({ textTile, subTitle }) => {
+    console.log(textTile);
     return (
-        <section className="box-title">
-            <h3 className="titleList">{textTile}</h3>
-            <p className="suTitleList">{subTitle}</p>
+        <section className={Style.boxtitle}>
+            <h3 className={Style.titleList}>{ textTile }</h3>
+            <p className={Style.suTitleList}>{ subTitle }</p>
         </section>
     )
 }
