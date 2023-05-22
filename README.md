@@ -21,10 +21,13 @@ Este proyecto es una página web que te permite imprimir etiquetas adhesivas per
 ## Instalacion 🚀
 
  _Clonar repo Git_
+
     ```git clone "https://github.com/JhonatanCremona/FronEndBalanzaAntonativa.git"```
 _cd FronEndBalanzaAntonativa_
 
 _Instala las Dependecias con npm_
+
     ```npm install```
 _Ejecutar proyecto_
+
     ```npm run dev```
