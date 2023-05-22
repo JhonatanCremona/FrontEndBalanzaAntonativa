@@ -9,7 +9,7 @@ import { Title } from "../title/Title";
 import Style from "./FormTemplate.module.css"
 
 
-export const FormEtiqueta = () => {
+export const FormTemplate = () => {
     const [newEtiqueta, setNewEtiqueta] = useState({
         nameEtiqueta:"",
         producto:"",

@@ -14,6 +14,7 @@ body{
   max-width: 1200px;
   margin: 0 auto;
   padding: 15px;
+  font-family: 'Roboto', sans-serif;
 }
 header{
   display: flex;
@@ -26,6 +27,13 @@ h1 {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 3px;
 }
+h3 {
+  margin-top: 13px;
+  margin-bottom: 0;
+  text-align: initial;
+  min-width: 180px;
+  font-family: 'Roboto', sans-serif;
+}
 a {
   outline: none;
   text-decoration: none;
@@ -33,4 +41,42 @@ a {
   font-size: 18px;
   color: rgb(231, 231, 231);
 }
-
+figure {
+  margin-right: 10px;
+}
+input[type="radio"]{
+  vertical-align: bottom;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin: 0.3rem;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: gray;
+}
+input[type="radio"]:checked + * {
+  color: teal;
+}
+input[type="radio"]:checked + *::before {
+  background: radial-gradient(teal 0%, teal 40%, transparent 50%, transparent);
+  border-color: teal;
+}
+input[type="radio"] + * {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+.iconos {
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 1px solid #b3b3b3;
+  padding: 10px;
+  border-radius: 50%;
+  margin: 5px;
+  color:#b3b3b3;
+  transition: all 0.4s;
+}
+.iconos:hover {
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #000;
+}
