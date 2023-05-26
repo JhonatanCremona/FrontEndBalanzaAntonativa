@@ -4,10 +4,10 @@ import { EtiquetaContext } from "../context/EtiquetaContex";
 import { motion } from 'framer-motion';
 
 //Componentes
-import { Icon } from "../icons/Icon";
 import { Title } from "../title/Title";
 import { Instruction } from "./instruction/Instruction";
 import { Toaster, toast } from 'sonner';
+import { Delete, EditNote, Note } from '../Icons'
 
 //Styls 
 import Style from "./ListTamplate.module.css";
@@ -15,7 +15,8 @@ import Style from "./ListTamplate.module.css";
 export const ListTamplate = () => {
     const { ordernarId } = useContext(EtiquetaContext);
     const [etiquetaDelete, setEtiquetaDelete] = useState({ id:"",name:"",estado:false });
-    const [etiquetaPrint, SetEtiquetaPrint] = useState({id:"",estado:false})   
+    const [etiquetaPrint, SetEtiquetaPrint] = useState({id:"",estado:false});
+
     const variants = {
         hidden: {
           opacity: 0
@@ -29,7 +30,6 @@ export const ListTamplate = () => {
         })
     }
     async function fetchMethod(apiDel, settings) {
-        console.log(apiDel);
         const response = await fetch(apiDel, settings)
         return await response.json()
     } 
@@ -81,15 +81,14 @@ export const ListTamplate = () => {
             })
             SetEtiquetaPrint({id:"",estado:false})
         }
-    }, [etiquetaPrint.estado])
-    
+    }, [etiquetaPrint.estado]);
+  
     return (
         <>
             <Title textTile={"Imprimir Etiqueta"} subTitle={"Seleccione la etiqueta que desea Imprimir"}/>
             <div className={Style.boxcards}>
-            <Toaster position="top-left"/>
-                <form onSubmit={(e) => e.preventDefault()}>
-                
+                <Toaster position="top-left"/>
+                <div>
                 {ordernarId.map((etiqueta, index) => {
                     return (
                         <motion.div
@@ -102,40 +101,34 @@ export const ListTamplate = () => {
                         key={etiqueta.id}
                         >
                             <article className={Style.card}>
-                                <figure>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${Style.list}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                                    </svg>
-                                </figure>
-
+                                <figure><Note/></figure>
                                 <div className={Style.boxcard}>
-                                    <div>
+                                    <section>
                                         <h3>{etiqueta.nameEtiqueta != null ? etiqueta.nameEtiqueta : "Etiqueta null"}</h3>
                                         <p className={Style.subtext}>{etiqueta.lote}</p>
-                                    </div>
+                                    </section>
 
-                                    <div className={Style.iconosbutton}>
-                                        <Icon iconD="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" method={console.log("tes")}/> 
-                                
-                                        <button className={Style.buttonicon} onClick={(e) => {
+                                    <section className={Style.iconosbutton}>
+                                        <button className={Style.buttonicon}>
+                                            <EditNote/>
+                                        </button>
+                                        <button className={Style.buttonicon} onClick={() => {
                                             setEtiquetaDelete({
                                                 id: etiqueta.id,
                                                 name:etiqueta.nameEtiqueta,
                                                 estado:true
                                             })
                                         }}>
-                                            <svg className="h-6 w-6  iconos delete" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                            </svg>
+                                            <Delete/>
                                         </button>
-                                        <input type="radio" id="html" name = "test" value={etiqueta.nameEtiqueta} onChange={(e)=> {SetEtiquetaPrint({id: etiqueta.id, estado: e.target.checked})}}/>
-                                    </div>
+                                        <input type="radio" name = "test" value={etiqueta.nameEtiqueta} onKeyDown={(e)=> {SetEtiquetaPrint({id: etiqueta.id, estado: e.target.checked})}}/>
+                                    </section>
                                 </div>
                             </article>
                         </motion.div>
                     )
                 })}
-                </form>
+                </div>
                 <Instruction/>
             </div>
         </>
