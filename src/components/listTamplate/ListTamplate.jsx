@@ -1,19 +1,20 @@
 //Dependencias
 import { useContext, useEffect, useState } from "react";
 import { EtiquetaContext } from "../context/EtiquetaContex";
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion} from 'framer-motion';
 
 //Componentes
 import { Title } from "../title/Title";
 import { Instruction } from "./instruction/Instruction";
 import { Toaster, toast } from 'sonner';
 import { Delete, EditNote, Note } from '../Icons'
+import { Modal } from '../modal/Modal'
 
 //Styls 
 import Style from "./ListTamplate.module.css";
 
 export const ListTamplate = () => {
-    const { ordernarId } = useContext(EtiquetaContext);
+    const { ordernarId, idEtiqueta, setIdEtiqueta } = useContext(EtiquetaContext);
     const [etiquetaDelete, setEtiquetaDelete] = useState({ id:"",name:"",estado:false });
     const [etiquetaPrint, SetEtiquetaPrint] = useState({id:"",estado:false});
 
@@ -45,7 +46,7 @@ export const ListTamplate = () => {
             toast.message(`Eliminaste la Etiqueta:`, {
                 description: ` - ${etiquetaDelete.name} -`,
                 style: {
-                    borderTop : '5px solid red',
+                    borderTop : '10px solid red',
                     }
             })
             setEtiquetaDelete({id:"",name:"",estado:false})
@@ -54,7 +55,6 @@ export const ListTamplate = () => {
 
     useEffect(()=> {
         if (etiquetaPrint.estado === true) {
-            console.log("Me ejecute");
             const apiUrl = `http://localhost:5000/etiquetas/imprimir/${etiquetaPrint.id}`
             const settings = {
                 method: "GET",
@@ -69,7 +69,6 @@ export const ListTamplate = () => {
                         transition: "all 0.3s"
                         }
                 })
-                return console.log(`Error Capturado Fuera de la función async: ${error}`)
             });
 
             toast.success(`🖶   Imprimiendo etiqueta... 🖶`, {
@@ -82,6 +81,13 @@ export const ListTamplate = () => {
             SetEtiquetaPrint({id:"",estado:false})
         }
     }, [etiquetaPrint.estado]);
+
+
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const close = () => setModalOpen(false);
+    const open = () => setModalOpen(true);
+
   
     return (
         <>
@@ -109,15 +115,20 @@ export const ListTamplate = () => {
                                     </section>
 
                                     <section className={Style.iconosbutton}>
-                                        <button className={Style.buttonicon}>
+                                        <motion.button
+                                            whileHover={{ scale: 1.1 }}
+                                            whileTap={{ scale: 0.9 }}
+                                            className={Style.buttonicon} 
+                                            onClick={() => {
+                                                setIdEtiqueta(etiqueta.id);
+                                                return modalOpen ? close() : open()
+                                            }}
+                                        >
                                             <EditNote/>
-                                        </button>
+                                        </motion.button>
+
                                         <button className={Style.buttonicon} onClick={() => {
-                                            setEtiquetaDelete({
-                                                id: etiqueta.id,
-                                                name:etiqueta.nameEtiqueta,
-                                                estado:true
-                                            })
+                                            setEtiquetaDelete({id: etiqueta.id,name:etiqueta.nameEtiqueta,estado:true})
                                         }}>
                                             <Delete/>
                                         </button>
@@ -130,7 +141,14 @@ export const ListTamplate = () => {
                 })}
                 </div>
                 <Instruction/>
+                <AnimatePresence
+                initial={false}
+                onExitComplete={() => null}
+            >
+                {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} text={"lorem"}  />}
+            </AnimatePresence>
             </div>
+            
         </>
     )
 }

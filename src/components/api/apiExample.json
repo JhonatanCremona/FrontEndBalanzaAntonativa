@@ -1,0 +1,48 @@
+
+[
+    {
+      "id": 352,
+      "nameEtiqueta": "Jamon Corte Rectangular",
+      "producto": "Jamon",
+      "lote": "123",
+      "fechaVencimiento": "2023-05-25",
+      "operario": "Juan",
+      "estado": false
+    },
+    {
+      "id": 311,
+      "nameEtiqueta": "Queso corte cuadrado",
+      "producto": "Jamon",
+      "lote": "123",
+      "fechaVencimiento": "2023-05-20",
+      "operario": "Carlos",
+      "estado": false
+    },
+    {
+      "id": 312,
+      "nameEtiqueta": "Etiqueta TEST",
+      "producto": "Jamon",
+      "lote": "123",
+      "fechaVencimiento": "2023-05-20",
+      "operario": "Carlos",
+      "estado": false
+    },
+    {
+      "id": 354,
+      "nameEtiqueta": "Test Etiqueta",
+      "producto": "Jamon",
+      "lote": "1422",
+      "fechaVencimiento": "2023-05-25",
+      "operario": "Marcas",
+      "estado": false
+    },
+    {
+      "id": 353,
+      "nameEtiqueta": "Etiqueta 32",
+      "producto": "Jamon",
+      "lote": "123",
+      "fechaVencimiento": "2023-05-25",
+      "operario": "Marcas",
+      "estado": false
+    }
+  ]
