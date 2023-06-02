@@ -9,6 +9,9 @@ export const EtiquetaContextProvaider = ({ children }) => {
     const [idEtiqueta, setIdEtiqueta] = useState("");
     const [etiqueta, setEtiqueta] = useState([]);
 
+
+    console.log("Soy de context Variable",import.meta.env.VITE_APP_TITLE);
+
     const API_URL = `http://localhost:5000`;
     const API_ETIQUETAS_LISTAR = `${API_URL}/etiquetas/listar`;
     const apiProducto = `${API_URL}/productos`;

@@ -25,6 +25,8 @@ export const FormTemplate = () => {
         });
     };
 
+    
+
     const API = "http://localhost:5000/etiquetas/guardar";
     const settings = {
         method: "POST", 
