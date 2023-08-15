@@ -34,3 +34,11 @@
     margin-top: 0px;
     margin-bottom: 22px;
 }
+.cardFormImprimir{
+    border: 1px solid red;
+    
+}
+.botonImprimir {
+    width: 30%;
+
+}

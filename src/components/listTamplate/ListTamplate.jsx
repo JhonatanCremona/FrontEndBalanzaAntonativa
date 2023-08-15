@@ -16,7 +16,7 @@ import Style from "./ListTamplate.module.css";
 export const ListTamplate = () => {
     const { ordernarId, idEtiqueta, setIdEtiqueta } = useContext(EtiquetaContext);
     const [etiquetaDelete, setEtiquetaDelete] = useState({ id:"",name:"",estado:false });
-    const [etiquetaPrint, SetEtiquetaPrint] = useState({id:"",estado:false});
+    const [etiquetaPrint, SetEtiquetaPrint] = useState({id:"",ncantidad:0});
 
     const variants = {
         hidden: {
@@ -53,15 +53,31 @@ export const ListTamplate = () => {
         }
     },[etiquetaDelete.estado]);
 
+    const APIPOST = "http://localhost:5000/etiquetas/imprimir";
+    const configuracion = {
+        method: "POST", 
+        mode: "cors", 
+        cache: "no-cache", 
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer", 
+        body: JSON.stringify(etiquetaPrint), 
+      }
+    /*
     useEffect(()=> {
         if (etiquetaPrint.estado === true) {
-            const apiUrl = `http://localhost:5000/etiquetas/imprimir/${etiquetaPrint.id}`
+            const apiUrl = `http://localhost:5000/etiquetas/imprimir/${etiquetaPrint.id}/${etiquetaPrint.ncantidad}`
+            console.log(apiUrl);
             const settings = {
                 method: "GET",
             }
             fetchMethod(apiUrl, settings)
             .then(response => console.log(response.json))
             .catch((error) => {
+                console.log(error);
                 toast.error(`Sin conexión al server ... 🖶`, {
                     style: {
                         borderTop : '5px solid red',
@@ -70,7 +86,6 @@ export const ListTamplate = () => {
                         }
                 })
             });
-
             toast.success(`🖶   Imprimiendo etiqueta... 🖶`, {
                 style: {
                     borderTop : '5px solid green',
@@ -81,7 +96,20 @@ export const ListTamplate = () => {
             SetEtiquetaPrint({id:"",estado:false})
         }
     }, [etiquetaPrint.estado]);
+    */
+    async function imprimirEtiqueta(API, settings) {
+        const response = await fetch(API, settings)
+        console.log(response.json);
+        return await response.json();
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(configuracion.body);
+        imprimirEtiqueta(APIPOST, configuracion)
+            .then(() => toast.success('Registro exitoso!'))
+            .catch(err => toast.error(`Ocurrio un error - sin conexion ERROR 500 ${err.message}`));
 
+    }
 
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -132,10 +160,17 @@ export const ListTamplate = () => {
                                         }}>
                                             <Delete/>
                                         </button>
-                                        <input type="radio" name = "test" value={etiqueta.nameEtiqueta} onKeyDown={(e)=> {SetEtiquetaPrint({id: etiqueta.id, estado: e.target.checked})}}/>
                                     </section>
                                 </div>
+                                
                             </article>
+                            <article className={Style.cardFormImprimir}>
+                                <form onSubmit={handleSubmit}>
+                                    <input type="number" name="test" onChange={(e) => {SetEtiquetaPrint({id: etiqueta.id, ncantidad: e.target.value})}}/>
+                                    <button className={Style.botonImprimir}>Imprimir---</button>
+                                </form>
+                            </article>
+                                        
                         </motion.div>
                     )
                 })}

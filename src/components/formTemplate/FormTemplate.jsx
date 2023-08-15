@@ -78,8 +78,8 @@ export const FormTemplate = () => {
         },
         {
             id:"3",
-            type: "number",
-            data: "unidad",
+            type: "text",
+            data: "unidades",
             text:"Cantidad",
             examples:"Ej:4"
         },
