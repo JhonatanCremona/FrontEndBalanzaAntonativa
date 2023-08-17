@@ -7,7 +7,7 @@ import { AnimatePresence, motion} from 'framer-motion';
 import { Title } from "../title/Title";
 import { Instruction } from "./instruction/Instruction";
 import { Toaster, toast } from 'sonner';
-import { Delete, EditNote, Note } from '../Icons'
+import { Delete, EditNote, Note, Imprimir } from '../Icons'
 import { Modal } from '../modal/Modal'
 
 //Styls 
@@ -166,8 +166,10 @@ export const ListTamplate = () => {
                             </article>
                             <article className={Style.cardFormImprimir}>
                                 <form onSubmit={handleSubmit}>
-                                    <input type="number" name="test" onChange={(e) => {SetEtiquetaPrint({id: etiqueta.id, ncantidad: e.target.value})}}/>
-                                    <button className={Style.botonImprimir}>Imprimir---</button>
+                                    <input type="text" name="test" className={Style.InputCantidad} onChange={(e) => {SetEtiquetaPrint({id: etiqueta.id, ncantidad: e.target.value})}}/>
+                                    <button className={Style.botonImprimir}>
+                                        <Imprimir className={Style.IconImprimir}/>
+                                    </button>
                                 </form>
                             </article>
                                         

@@ -75,6 +75,11 @@ input[type="radio"] + * {
   color:#b3b3b3;
   transition: all 0.4s;
 }
+.imprimir {
+  margin: 0;
+  width: 1rem;
+  height: 1rem;
+}
 .iconos:hover {
   color: #fff;
   background-color: #000;
