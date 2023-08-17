@@ -1,0 +1,67 @@
+.boxcards {
+    border: 1px solid rgb(51, 51, 51);
+    margin-top: 47px;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.card {
+    margin: 10px;
+    margin-bottom: 0;
+    display: flex;
+    background-color: #262626;
+    border-radius: 20px;
+    max-width: 480px;
+}
+.list {
+    color: rgb(209, 152, 41);
+}
+.boxcard {
+    display: flex;
+    align-items: center;
+}
+.subtext {
+    text-align: initial;
+    margin-top: 0;
+}
+.iconosbutton {
+    margin-left: 50px ;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+.buttonicon {
+    margin-top: 0px;
+    margin-bottom: 22px;
+}
+.cardFormImprimir {
+    position: relative;
+}
+
+.cardFormImprimir form{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    width: 400px;
+    height: 42.4px;
+}
+.InputCantidad {
+    border: none;
+    background-color: #b3b3b3;
+    height: 30px;
+    width: 100px;
+    border-radius: 25px;
+    position: absolute;
+    outline: none;
+    padding-left:10px ;
+}
+.botonImprimir {
+    margin: 0;
+    padding: 0;
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+}
+
